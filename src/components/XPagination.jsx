@@ -1,5 +1,6 @@
 import React from 'react'
-import { Pagination } from '@mui/material'
+import { Pagination, PaginationItem } from '@mui/material'
+import { Link as NavLink } from 'react-router-dom';
 
 export const XPagination = ({ count, page, handlePagination }) => {
     return (
@@ -11,6 +12,13 @@ export const XPagination = ({ count, page, handlePagination }) => {
             showLastButton
             showFirstButton
             onChange={handlePagination}
+            renderItem={(item) => (
+                <PaginationItem
+                    component={NavLink}
+                    to={`/?page=${item.page}`}
+                    {...item}
+                />
+            )}
         />
     )
 }
